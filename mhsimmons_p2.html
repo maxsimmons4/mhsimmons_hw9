@@ -6,7 +6,35 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Max Simmons</h1>
-    <p>Testing</p>
+    <h1>Business Analytics Student Survey</h1>
+    <label for="year" class="form-label">I am finishing my</label>
+    <select id="year" name="year" class="form-control" required>
+      <option value="">Please select your year</option>
+      <option value="first-year">First year at Iowa</option>
+      <option value="second-year">Second year at Iowa</option>
+      <option value="third-year">Third year at Iowa</option>
+      <option value="fourth-year">Fourth year at Iowa</option>
+      <option value="fourth-year">Fifth year or more at Iowa</option>
+    </select>
+    <label for="completed-classes" class="form-label"
+      >BAIS core classes I have completed</label
+    >
+    <select
+      id="completed-classes"
+      name="completed-classes []"
+      class="form-control"
+      multiple
+      required
+    >
+      <option value="class1">Information Systems/option></option>
+      <option value="class2">Operations</option>
+      <option value="class3">Foundations of Business Analytics</option>
+      <option value="class4">Computational Thinking</option>
+      <option value="class5">Database Management</option>
+      <option value="class5">Data Wrangling</option>
+      <option value="class5">Data Mining</option>
+      <option value="class5">BAIS Capstone</option>
+    </select>
   </body>
+  <button onclick="window.location.href='mhsimmons_ty.html';">Finish</button>
 </html>
