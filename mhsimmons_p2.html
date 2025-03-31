@@ -1,49 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      src="https://kit.fontawesome.com/4ff0cf85f8.js"
-      crossorigin="anonymous"
-    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Business Analytics Student Survey</title>
     <link rel="stylesheet" href="stylesheet.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/4ff0cf85f8.js"
       crossorigin="anonymous"
     ></script>
   </head>
   <body>
-    <h1>Business Analytics Student Survey</h1>
-    <label for="year" class="form-label">I am finishing my</label>
-    <select id="year" name="year" class="form-control" required>
-      <option value="">Please select your year</option>
-      <option value="first-year">First year at Iowa</option>
-      <option value="second-year">Second year at Iowa</option>
-      <option value="third-year">Third year at Iowa</option>
-      <option value="fourth-year">Fourth year at Iowa</option>
-      <option value="fourth-year">Fifth year or more at Iowa</option>
-    </select>
-    <label for="completed-classes" class="form-label"
-      >BAIS core classes I have completed</label
-    >
-    <select
-      id="completed-classes"
-      name="completed-classes []"
-      class="form-control"
-      multiple
-      required
-    >
-      <option value="class1">Information Systems/option></option>
-      <option value="class2">Operations</option>
-      <option value="class3">Foundations of Business Analytics</option>
-      <option value="class4">Computational Thinking</option>
-      <option value="class5">Database Management</option>
-      <option value="class5">Data Wrangling</option>
-      <option value="class5">Data Mining</option>
-      <option value="class5">BAIS Capstone</option>
-    </select>
+    <div class="container py-5">
+      <h1 class="text-center mb-4">Business Analytics Student Survey</h1>
+      <form id="survey-form">
+        <div class="row mb-3">
+          <label for="year" class="col-form-label col-sm-4"
+            >I am finishing my</label
+          >
+          <div class="col-sm-8">
+            <select id="year" name="year" class="form-select" required>
+              <option value="">Please select your year</option>
+              <option value="first-year">First year at Iowa</option>
+              <option value="second-year">Second year at Iowa</option>
+              <option value="third-year">Third year at Iowa</option>
+              <option value="fourth-year">Fourth year at Iowa</option>
+              <option value="fifth-year">Fifth year or more at Iowa</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="completed-classes" class="col-form-label col-sm-4"
+            >BAIS core classes I have completed</label
+          >
+          <div class="col-sm-8">
+            <div id="completed-classes" class="custom-multi-select">
+              <div class="option" data-value="class1">Information Systems</div>
+              <div class="option" data-value="class2">Operations</div>
+              <div class="option" data-value="class3">
+                Foundations of Business Analytics
+              </div>
+              <div class="option" data-value="class4">
+                Computational Thinking
+              </div>
+              <div class="option" data-value="class5">Database Management</div>
+              <div class="option" data-value="class6">Data Wrangling</div>
+              <div class="option" data-value="class7">Data Mining</div>
+              <div class="option" data-value="class8">BAIS Capstone</div>
+            </div>
+            <input
+              type="hidden"
+              name="completed-classes"
+              id="completed-classes-input"
+            />
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Finish</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const options = document.querySelectorAll(
+          ".custom-multi-select .option"
+        );
+        const hiddenInput = document.getElementById("completed-classes-input");
+
+        options.forEach((option) => {
+          option.addEventListener("click", function () {
+            this.classList.toggle("selected");
+            let selectedValues = [];
+            document
+              .querySelectorAll(".custom-multi-select .option.selected")
+              .forEach((selectedOption) => {
+                selectedValues.push(selectedOption.getAttribute("data-value"));
+              });
+
+            hiddenInput.value = selectedValues.join(",");
+          });
+        });
+
+        const form = document.getElementById("survey-form");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          window.location.href = "mhsimmons_ty.html";
+        });
+      });
+    </script>
   </body>
-  <button onclick="window.location.href='mhsimmons_ty.html';">Finish</button>
 </html>
